@@ -1,11 +1,73 @@
 function computerPlay() {
     let randomNum = Math.floor(Math.random() * 3);
 
-    if(randomNum === 0) {
-        return "rock";
-    } else if (randomNum === 1) {
-        return "paper";
-    } else if (randomNum === 2) {
-        return "scissors";
+    switch(randomNum) {
+        case 0:
+            return "rock";
+            break;
+        case 1:
+            return "paper";
+            break;
+        case 2:
+            return "scissors";
+            break;
+        default:
+            return "";
     }
 }
+
+function playRound(playerSelection, computerSelection) {
+    let isPlayerWin = false;
+    
+    playerSelection = playerSelection.toLowerCase();
+
+    console.log("player: " + playerSelection);
+    console.log("computer: " + computerSelection);
+    
+    if(playerSelection === computerSelection) {
+        return "It's a draw!";
+    } else if(playerSelection === "rock") {
+        if(computerSelection === "paper") {
+            isPlayerWin = false;
+        } else if (computerSelection === "scissors") {
+            isPlayerWin = true;
+        }
+    } else if(playerSelection === "paper") {
+        if(computerSelection === "rock") {
+            isPlayerWin = true;
+        } else if (computerSelection === "scissors") {
+            isPlayerWin = false;
+        }
+    } else if(playerSelection === "scissors") {
+        if(computerSelection === "rock") {
+            isPlayerWin = false;
+        } else if(computerSelection === "paper") {
+            isPlayerWin = true;
+        }
+    }
+
+    if(isPlayerWin) {
+        return "You Win! " + playerSelection + " beats " + computerSelection;
+    } else {
+        return "You Lose! " + computerSelection + " beats " + playerSelection;
+    }
+}
+
+function game() {
+    let playerScore = 0;
+    let compScore = 0;
+
+    while(playerScore < 5 && compScore < 5) {
+        let playerSelection = prompt("rock, paper, or scissors?");
+        let roundMessage = playRound(playerSelection, computerPlay());
+        console.log(roundMessage);
+        if(roundMessage.startsWith("You Win")) {
+            playerScore++;
+        } else if(roundMessage.startsWith("You Lose")) {
+            compScore++;
+        }
+    }
+}
+
+
+
