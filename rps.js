@@ -47,25 +47,41 @@ function playRound(playerSelection, computerSelection) {
     }
 
     if(isPlayerWin) {
-        return "You Win! " + playerSelection + " beats " + computerSelection;
+        return "You Win the round! " + playerSelection + " beats " + computerSelection;
     } else {
-        return "You Lose! " + computerSelection + " beats " + playerSelection;
+        return "You Lose the round! " + computerSelection + " beats " + playerSelection;
     }
 }
 
 function game() {
     let playerScore = 0;
     let compScore = 0;
+    let gamesPlayed = 0;
 
-    while(playerScore < 5 && compScore < 5) {
+    while(gamesPlayed < 5) {
         let playerSelection = prompt("rock, paper, or scissors?");
         let roundMessage = playRound(playerSelection, computerPlay());
         console.log(roundMessage);
         if(roundMessage.startsWith("You Win")) {
             playerScore++;
+            gamesPlayed++;
         } else if(roundMessage.startsWith("You Lose")) {
             compScore++;
+            gamesPlayed++;
+        } else {
+            gamesPlayed++;
         }
+        console.log("player score: " + playerScore);
+        console.log("computer score: " + compScore);
+        console.log("games played: " + gamesPlayed);
+    }
+
+    if(playerScore > compScore) {
+        console.log("You Win the game!");
+    } else if(compScore > playerScore) {
+        console.log("You Lose the game!");
+    } else {
+        console.log("The game is a draw! How boring..");
     }
 }
 
