@@ -1,3 +1,12 @@
+const scoreDisplayDiv = document.querySelector('#scoreDisplay');
+const playerDisplayDiv = document.querySelector('#playerScoreDisplay');
+const compDisplayDiv = document.querySelector('#compScoreDisplay');
+
+let playerScore = 0;
+let compScore = 0;
+let gamesPlayed = 0;
+
+
 function computerPlay() {
     let randomNum = Math.floor(Math.random() * 3);
 
@@ -47,17 +56,17 @@ function playRound(playerSelection, computerSelection) {
     }
 
     if(isPlayerWin) {
-        return "You Win the round! " + playerSelection + " beats " + computerSelection;
+        playerScore++;
+        playerDisplayDiv.textContent = "Player Score: " + playerScore;
     } else {
-        return "You Lose the round! " + computerSelection + " beats " + playerSelection;
+        compScore++;
+        compDisplayDiv.textContent = "Computer Score: " + compScore;
     }
 }
 
-function game() {
-    let playerScore = 0;
-    let compScore = 0;
-    let gamesPlayed = 0;
 
+
+function game() {
     let playerSelection = prompt("rock, paper, or scissors?");
     let roundMessage = playRound(playerSelection, computerPlay());
     console.log(roundMessage);

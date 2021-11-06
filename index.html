@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors (console)</title>
-    <script src="rps.js"></script>
+    <title>Rock Paper Scissors (ui)</title>
+    <script src="rps.js" defer></script>
 </head>
 <body>
-    <div class="buttonContainer">
+    <div id="buttonContainer">
         <button onclick="playRound('rock', computerPlay())">Rock</button>
         <button onclick="playRound('paper', computerPlay())">Paper</button>
         <button onclick="playRound('scissors', computerPlay())">Scissors</button>
     </div>
-    <div class="scoreDisplay"></div>
+    <br>
+    <div id="scoreDisplay">
+        <div id="playerScoreDisplay">
+            Player Score: 
+        </div>
+        <div id="compScoreDisplay">
+            Computer Score:
+        </div>
+    </div>
 </body>
 </html>
