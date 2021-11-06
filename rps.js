@@ -34,7 +34,9 @@ function playRound(playerSelection, computerSelection) {
     console.log("computer: " + computerSelection);
     
     if(playerSelection === computerSelection) {
-        return "It's a draw!";
+        playerDisplayDiv.textContent = "Player Score: " + playerScore;
+        compDisplayDiv.textContent = "Computer Score: " + compScore;
+        return;
     } else if(playerSelection === "rock") {
         if(computerSelection === "paper") {
             isPlayerWin = false;
@@ -58,9 +60,23 @@ function playRound(playerSelection, computerSelection) {
     if(isPlayerWin) {
         playerScore++;
         playerDisplayDiv.textContent = "Player Score: " + playerScore;
+        compDisplayDiv.textContent = "Computer Score: " + compScore;
+        if(playerScore == 5) {
+            playerDisplayDiv.textContent = "You WIN!";
+            compDisplayDiv.textContent = "";
+            playerScore = 0;
+            compScore = 0;
+        }
     } else {
         compScore++;
+        playerDisplayDiv.textContent = "Player Score: " + playerScore;
         compDisplayDiv.textContent = "Computer Score: " + compScore;
+        if(compScore == 5) {
+            playerDisplayDiv.textContent = "You lose :(";
+            compDisplayDiv.textContent = "";
+            playerScore = 0;
+            compScore = 0;
+        }
     }
 }
 
