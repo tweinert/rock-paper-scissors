@@ -58,32 +58,8 @@ function game() {
     let compScore = 0;
     let gamesPlayed = 0;
 
-    while(gamesPlayed < 5) {
-        let playerSelection = prompt("rock, paper, or scissors?");
-        let roundMessage = playRound(playerSelection, computerPlay());
-        console.log(roundMessage);
-        if(roundMessage.startsWith("You Win")) {
-            playerScore++;
-            gamesPlayed++;
-        } else if(roundMessage.startsWith("You Lose")) {
-            compScore++;
-            gamesPlayed++;
-        } else {
-            gamesPlayed++;
-        }
-        console.log("player score: " + playerScore);
-        console.log("computer score: " + compScore);
-        console.log("games played: " + gamesPlayed);
-    }
-
-    if(playerScore > compScore) {
-        console.log("You Win the game!");
-    } else if(compScore > playerScore) {
-        console.log("You Lose the game!");
-    } else {
-        console.log("The game is a draw! How boring..");
-    }
+    let playerSelection = prompt("rock, paper, or scissors?");
+    let roundMessage = playRound(playerSelection, computerPlay());
+    console.log(roundMessage);
 }
-
-
 
